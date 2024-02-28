@@ -3,6 +3,8 @@ import { ROUTES } from "./routesModel";
 import { SignInSide } from "../components/pages/login-page";
 import { SignUp } from "../components/pages/register-page";
 
+
+
 const Router = () => {
     return (
         <Routes>

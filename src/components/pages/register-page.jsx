@@ -12,6 +12,8 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import SignupLogic from '../../Logic/Signup/signupLogic';
+import { sign } from 'crypto';
 
 function Copyright(props) {
   return (
@@ -30,14 +32,8 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 const SignUp = () => {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+
+  const { signupValue } = SignupLogic();
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -57,7 +53,7 @@ const SignUp = () => {
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+          <Box component="form" noValidate onSubmit={''} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
@@ -66,6 +62,7 @@ const SignUp = () => {
                   required
                   fullWidth
                   id="firstName"
+                  value={signupValue.firstName}
                   label="First Name"
                   autoFocus
                 />
@@ -75,6 +72,7 @@ const SignUp = () => {
                   required
                   fullWidth
                   id="lastName"
+                  value={signupValue.lastName}
                   label="Last Name"
                   name="lastName"
                   autoComplete="family-name"
@@ -85,6 +83,7 @@ const SignUp = () => {
                   required
                   fullWidth
                   id="PhoneNumber"
+                  value={signupValue.PhoneNumber}
                   label="Phone Number"
                   name="PhoneNumber"
                   autoComplete="Phone-Number"
@@ -95,6 +94,7 @@ const SignUp = () => {
                   required
                   fullWidth
                   id="email"
+                  value={signupValue.email}
                   label="Email Address"
                   name="email"
                   autoComplete="email"
@@ -108,6 +108,7 @@ const SignUp = () => {
                   label="Password"
                   type="password"
                   id="password"
+                  value={signupValue.password}
                   autoComplete="new-password"
                 />
               </Grid>
@@ -119,6 +120,7 @@ const SignUp = () => {
                   label="Address"
                   type="Address"
                   id="Address"
+                  value={signupValue.Address}
                   autoComplete="Address"
                 />
               </Grid>
@@ -127,6 +129,7 @@ const SignUp = () => {
                   required
                   fullWidth
                   id="country"
+                  value={signupValue.country}
                   label="country"
                   name="country"
                   autoComplete="country"
@@ -137,6 +140,7 @@ const SignUp = () => {
                   required
                   fullWidth
                   id="zip"
+                  value={signupValue.zip}
                   label="zip"
                   name="zip"
                   autoComplete="zip"
@@ -147,6 +151,7 @@ const SignUp = () => {
                   required
                   fullWidth
                   id="city"
+                  value={signupValue.city}
                   label="city"
                   name="city"
                   autoComplete="city"

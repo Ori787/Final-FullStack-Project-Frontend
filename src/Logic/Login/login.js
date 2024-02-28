@@ -22,7 +22,7 @@ setLoginValue((currentState) => ({
 const request = loginValue;
 
 //todo change url to a real url
-const URL = "https://www.google.com";
+const URL = "http://localhost:8080";
 
 const HandleLoginClick = async () => {
     try {
@@ -39,7 +39,8 @@ const HandleLoginClick = async () => {
 };
 
 return { loginValue, HandleInputChange, HandleLoginClick };
+
 };
 
 
-export { LoginLogic };
+export default LoginLogic;

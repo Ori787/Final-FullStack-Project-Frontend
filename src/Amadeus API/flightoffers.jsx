@@ -7,6 +7,7 @@ import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import MediaCover from "../components/card";
+import { useLocation } from "react-router-dom";
 
 const FlightOffers = () => {
 
@@ -18,6 +19,9 @@ const FlightOffers = () => {
     const [adults, setAdults] = useState('');
     const [price, setPrice] = useState(null);
     const [flightOffers, setFlightOffers] = useState([]);
+
+    const location = useLocation();
+    const isroot = location.pathname === '/';
 
 
 const baseURL = "https://test.api.amadeus.com/v2";
@@ -136,24 +140,24 @@ return (
         </Grid>
       </Grid>
       </Box>
-      <Box sx={{mt:10}}>
-      {flightOffers.map((offer, index) => (
-      <MediaCover key={index}
-       price={offer.price.total}
-        origin={offer.itineraries[0].segments[0].departure.iataCode}
-         destination={offer.itineraries[0].segments[0].arrival.iataCode} 
-          isDirectFlightOutbound={offer.itineraries[0].segments.length === 1}
-          isDirectFlightInbound={offer.itineraries.length > 1 && offer.itineraries[1].segments.length === 1}
-          connectionFinalDestination={offer.itineraries[0].segments.length > 1 ? offer.itineraries[0].segments[1].arrival.iataCode : null
-          }
-          />
-))};
-    </Box>
+      {isroot && (
+           <Box sx={{mt:10}}>
+           {flightOffers.map((offer, index) => (
+           <MediaCover key={index}
+            price={offer.price.total}
+             origin={offer.itineraries[0].segments[0].departure.iataCode}
+              destination={offer.itineraries[0].segments[0].arrival.iataCode} 
+               isDirectFlightOutbound={offer.itineraries[0].segments.length === 1}
+               isDirectFlightInbound={offer.itineraries.length > 1 && offer.itineraries[1].segments.length === 1}
+               connectionFinalDestination={offer.itineraries[0].segments.length > 1 ? offer.itineraries[0].segments[1].arrival.iataCode : null
+               }
+               />
+     ))};
+         </Box>
+      )}
         </>
     );
 };
-
-
 
 
 export { FlightOffers };

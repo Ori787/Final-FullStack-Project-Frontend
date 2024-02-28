@@ -38,7 +38,7 @@ export default function MediaCover({ price, origin, destination, isDirectFlightO
             <br/>
             <br/>
             <Box sx={{display:'flex',justifyContent:'space-between'}}>
-            <Typography><strong>{destination}</strong></Typography>
+            <Typography><strong>{isDirectFlightInbound? destination : connectionFinalDestination}</strong></Typography>
             <Typography><strong>{origin}</strong></Typography>
             </Box>
             {isDirectFlightInbound ? <p>Direct Flight</p> : <p>Flight with Connection Stops</p>}

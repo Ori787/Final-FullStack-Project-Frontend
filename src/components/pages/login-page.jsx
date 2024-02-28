@@ -12,9 +12,8 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { LoginLogic } from '../../Logic/Login/login';
+import  LoginLogic from '../../Logic/Login/login';
 
-const { loginValue, HandleInputChange, HandleLoginClick } = LoginLogic;
 
 function Copyright(props) {
   return (
@@ -33,6 +32,9 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 const SignInSide = () => {
+
+  const { loginValue, HandleInputChange, HandleLoginClick } = LoginLogic();
+
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -79,7 +81,7 @@ const SignInSide = () => {
                 autoComplete="email"
                 autoFocus
                 onChange={HandleInputChange}
-                value={loginValue}
+                value={loginValue.email}
               />
               <TextField
                 margin="normal"
@@ -91,7 +93,7 @@ const SignInSide = () => {
                 id="password"
                 autoComplete="current-password"
                 onChange={HandleInputChange}
-                value={loginValue}
+                value={loginValue.password}
               />
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
