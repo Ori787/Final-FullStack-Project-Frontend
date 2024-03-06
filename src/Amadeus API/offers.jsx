@@ -6,8 +6,10 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import MediaCover from "../components/card";
+import MediaCover from "../components/flight-offer-card";
 import { useLocation } from "react-router-dom";
+import HotelOffers from "./hoteloffers";
+import DestinationList from "../Node.js/DestinationList";
 
 const FlightOffers = () => {
 
@@ -21,7 +23,10 @@ const FlightOffers = () => {
     const [flightOffers, setFlightOffers] = useState([]);
 
     const location = useLocation();
+
     const isroot = location.pathname === '/';
+
+    const isHotels = location.pathname === '/hotels'
 
 
 const baseURL = "https://test.api.amadeus.com/v2";
@@ -50,8 +55,6 @@ setFlightOffers(data);
 
 console.log("data", data)
 
-setPrice(data.price);
-
 
 } catch (err) {
 console.error('Error getting flight offers', err);
@@ -62,6 +65,7 @@ console.error('Error getting flight offers', err);
 
 return (
   <>
+  { isroot && (
             <Box sx={{ flexGrow: 1, mt:5, ml:6.2 }}>
                 <Grid container spacing={2} columns={36}>
       <Grid item xs={12} sm={6}>
@@ -140,6 +144,10 @@ return (
         </Grid>
       </Grid>
       </Box>
+)}
+{isHotels && (
+<HotelOffers/>
+)}
       {isroot && (
            <Box sx={{mt:10}}>
            {flightOffers.map((offer, index) => (

@@ -1,4 +1,4 @@
-import { FlightOffers } from '../Amadeus API/flightoffers';
+import { FlightOffers } from '../Amadeus API/offers';
 
 
 

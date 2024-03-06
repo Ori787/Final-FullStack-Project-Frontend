@@ -13,7 +13,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import SignupLogic from '../../Logic/Signup/signupLogic';
-import { sign } from 'crypto';
+ 
 
 function Copyright(props) {
   return (

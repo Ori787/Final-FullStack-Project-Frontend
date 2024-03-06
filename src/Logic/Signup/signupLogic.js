@@ -14,7 +14,14 @@ const SignupLogic = () => {
         city: "",
     });
 
-    return { signupValue };
+    const handleInputChange = (e) => {
+setSignupValue((currentState) => ({
+...currentState,
+[e.target.id] : e.target.value
+}));
+    };
+
+    return { signupValue, handleInputChange };
 
 };
 
