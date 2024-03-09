@@ -1,25 +1,22 @@
-const normalizeSignup = user => ({
+const normalizeSignup = signupValue => {
+    return {
     name: {
-        first: user.first,
-        middle: user.middle,
-        last: user.last,
+        first: signupValue.first,
+        middle: signupValue.middle,
+        last: signupValue.last,
     },
-    phone: user.phone,
-    email: user.email,
-    password: user.password,
-    address: {
-        state: user.state,
-        country: user.country,
-        zip: user.zip,
-        city: user.city,
-        street: user.street,
-        houseNumber: user.houseNumber,
+    PhoneNumber: signupValue.PhoneNumber,
+    email: signupValue.email,
+    password: signupValue.password,
+     address: {
+        country: signupValue.country,
+        zip: +signupValue.zip,
+        city: signupValue.city,
+        street: signupValue.street,
+        houseNumber: signupValue.houseNumber
     },
-    image: {
-        url: user.url,
-        alt: user.alt,
-    },
-    isBusiness: user.isBusiness,
-});
+    isBusiness: signupValue.isBusiness || false,
+}
+};
 
 export default  normalizeSignup;

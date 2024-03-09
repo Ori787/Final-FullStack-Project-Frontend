@@ -1,9 +1,13 @@
 import axios from "axios";
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SigninSchema } from "../../Validation/SigninJoi";
+import { useNavigate } from "react-router-dom";
 
 
 const LoginLogic = () => {
+
+    const navigate = useNavigate();
+
 
 const [loginValue, setLoginValue] = useState({
     email: "",
@@ -19,22 +23,30 @@ setLoginValue((currentState) => ({
 
 };
 
+
 const request = loginValue;
 
-//todo change url to a real url
-const URL = "http://localhost:8080";
 
-const HandleLoginClick = async () => {
+const URL = "http://localhost:8080/users/login";
+
+const HandleLoginClick = async (e) => {
+    e.preventDefault();
     try {
         const validation = SigninSchema.validate(loginValue);
         if (validation.error) {
-            throw new Error(validation.error.details[0].message);
+            console.log("Validation Error:", validation.error);
         }
         
-        await axios.post(URL, request);
+       const response = await axios.post(URL, request);
+
+       const data = response.data;
+if (data) {
+    console.log("data", data)
+    navigate("/")
+}
     } catch (err) {
         console.log("Error", err);
-        alert("Could not sign in. Please try again later");
+        alert("could not sign in. please try again")
     }
 };
 

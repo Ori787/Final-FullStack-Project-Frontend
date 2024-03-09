@@ -1,11 +1,11 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import DestinationCard from "../components/destinationCard";
-import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 
 
 
-const DestinationList = async () => {
+const DestinationList = () => {
 
     const [destinationList, setDestinationList] = useState([]);
 
@@ -20,7 +20,7 @@ const DestinationList = async () => {
                 }
             });
             const data = response.data;
-            console.log("data", data)
+            
             setDestinationList(data);
             
             } catch (err) {
@@ -33,17 +33,18 @@ const DestinationList = async () => {
 
 
 return (
-    <Box>
+    <Grid container spacing={2} mt={4} ml={-1} justifyContent={"space-between"}>
     {destinationList.map((destination, index) => (
+        <Grid item xs={12} sm={12} md={3} key={index}>
 <DestinationCard
-key={index}
 Image={destination.Image}
 Destination={destination.Destination}
 Description={destination.Description}
 />
+</Grid>
     ))
-    };
-    </Box>
+    }
+    </Grid>
 )
 }
 

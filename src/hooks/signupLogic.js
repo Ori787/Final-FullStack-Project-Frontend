@@ -1,17 +1,22 @@
 import { useState } from "react";
 
-const SignupLogic = () => {
+const useSignupLogic = () => {
 
     const [signupValue, setSignupValue] = useState({
-        firstName: "",
-        lastName: "",
+        first: "",
+        middle: "",
+        last: "",
         PhoneNumber: "",
+        state: "",
         email: "",
         password: "",
-        Address: "",
         country: "",
-        zip: "",
         city: "",
+        street: "",
+        houseNumber: "",
+        zip: "",
+        isBusiness: false,
+        isAdmin: false,
     });
 
     const handleInputChange = (e) => {
@@ -25,4 +30,4 @@ setSignupValue((currentState) => ({
 
 };
 
-export default SignupLogic;
+export default useSignupLogic;

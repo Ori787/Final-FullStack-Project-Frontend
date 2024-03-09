@@ -5,13 +5,12 @@ import CardContent from '@mui/joy/CardContent';
 import Typography from '@mui/joy/Typography';
 import LocationOnRoundedIcon from '@mui/icons-material/LocationOnRounded';
 
-export default function DestinationCard(Description, Destination, Image) {
+export default function DestinationCard({Description, Destination, Image}) {
   return (
     <Card sx={{ minHeight: '280px', width: 320 }}>
       <CardCover>
         <img
           src={Image}
-          srcSet="https://images.unsplash.com/photo-1542773998-9325f0a098d7?auto=format&fit=crop&w=320&dpr=2 2x"
           loading="lazy"
           alt=""
         />
@@ -24,7 +23,7 @@ export default function DestinationCard(Description, Destination, Image) {
       />
       <CardContent sx={{ justifyContent: 'flex-end' }}>
         <Typography level="title-lg" textColor="#fff">
-        startDecorator={<LocationOnRoundedIcon />}
+        {<LocationOnRoundedIcon />}
           {Destination}
         </Typography>
         <Typography

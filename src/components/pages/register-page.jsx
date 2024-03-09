@@ -12,8 +12,10 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import SignupLogic from '../../Logic/Signup/signupLogic';
+import SignupLogic from '../../hooks/signupLogic';
+ import SignupRequest from '../../Logic/Signup/signUpRequest';
  
+
 
 function Copyright(props) {
   return (
@@ -33,7 +35,12 @@ const defaultTheme = createTheme();
 
 const SignUp = () => {
 
-  const { signupValue } = SignupLogic();
+  const { signupValue, handleInputChange } = SignupLogic();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    SignupRequest(signupValue);
+};
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -53,16 +60,17 @@ const SignUp = () => {
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-          <Box component="form" noValidate onSubmit={''} sx={{ mt: 3 }}>
+          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
                   autoComplete="given-name"
-                  name="firstName"
+                  name="first"
                   required
                   fullWidth
-                  id="firstName"
-                  value={signupValue.firstName}
+                  id="first"
+                  value={signupValue.first}
+                  onChange={handleInputChange}
                   label="First Name"
                   autoFocus
                 />
@@ -71,10 +79,11 @@ const SignUp = () => {
                 <TextField
                   required
                   fullWidth
-                  id="lastName"
-                  value={signupValue.lastName}
+                  id="last"
+                  value={signupValue.last}
+                  onChange={handleInputChange}
                   label="Last Name"
-                  name="lastName"
+                  name="last"
                   autoComplete="family-name"
                 />
               </Grid>
@@ -84,6 +93,7 @@ const SignUp = () => {
                   fullWidth
                   id="PhoneNumber"
                   value={signupValue.PhoneNumber}
+                  onChange={handleInputChange}
                   label="Phone Number"
                   name="PhoneNumber"
                   autoComplete="Phone-Number"
@@ -95,6 +105,7 @@ const SignUp = () => {
                   fullWidth
                   id="email"
                   value={signupValue.email}
+                  onChange={handleInputChange}
                   label="Email Address"
                   name="email"
                   autoComplete="email"
@@ -109,6 +120,7 @@ const SignUp = () => {
                   type="password"
                   id="password"
                   value={signupValue.password}
+                  onChange={handleInputChange}
                   autoComplete="new-password"
                 />
               </Grid>
@@ -116,51 +128,67 @@ const SignUp = () => {
                 <TextField
                   required
                   fullWidth
-                  name="Address"
-                  label="Address"
-                  type="Address"
-                  id="Address"
-                  value={signupValue.Address}
+                  name="street"
+                  label="street"
+                  type="street"
+                  id="street"
+                  value={signupValue.street}
+                  onChange={handleInputChange}
                   autoComplete="Address"
                 />
               </Grid>
-              <Grid item xs={4} sm={4}>
+              <Grid item xs={3} sm={3}>
                 <TextField
                   required
                   fullWidth
                   id="country"
                   value={signupValue.country}
+                  onChange={handleInputChange}
                   label="country"
                   name="country"
                   autoComplete="country"
                 />
               </Grid>
-              <Grid item xs={4} sm={4}>
+              <Grid item xs={3} sm={3}>
                 <TextField
                   required
                   fullWidth
                   id="zip"
                   value={signupValue.zip}
+                  onChange={handleInputChange}
                   label="zip"
                   name="zip"
                   autoComplete="zip"
                 />
               </Grid>
-              <Grid item xs={4} sm={4}>
+              <Grid item xs={3} sm={3}>
                 <TextField
                   required
                   fullWidth
                   id="city"
                   value={signupValue.city}
+                  onChange={handleInputChange}
                   label="city"
                   name="city"
                   autoComplete="city"
                 />
               </Grid>
+              <Grid item xs={3}>
+                <TextField
+                  required
+                  fullWidth
+                  id="houseNumber"
+                  value={signupValue.houseNumber}
+                  onChange={handleInputChange}
+                  label="House Number"
+                  name="houseNumber"
+                  autoComplete="houseNumber"
+                />
+              </Grid>
               <Grid item xs={12}>
                 <FormControlLabel
-                  control={<Checkbox value="allowExtraEmails" color="primary" />}
-                  label="I want to receive inspiration, marketing promotions and updates via email."
+                  control={<Checkbox value={signupValue.isBusiness} id="isBusiness" onChange={handleInputChange} color="primary" />}
+                  label="is this a business user?"
                 />
               </Grid>
             </Grid>

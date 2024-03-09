@@ -10,6 +10,8 @@ import MediaCover from "../components/flight-offer-card";
 import { useLocation } from "react-router-dom";
 import HotelOffers from "./hoteloffers";
 import DestinationList from "../Node.js/DestinationList";
+import Typography from '@mui/material/Typography';
+
 
 const FlightOffers = () => {
 
@@ -24,7 +26,7 @@ const FlightOffers = () => {
 
     const location = useLocation();
 
-    const isroot = location.pathname === '/';
+    const ishome = location.pathname === '/';
 
     const isHotels = location.pathname === '/hotels'
 
@@ -65,7 +67,7 @@ console.error('Error getting flight offers', err);
 
 return (
   <>
-  { isroot && (
+  { ishome && (
             <Box sx={{ flexGrow: 1, mt:5, ml:6.2 }}>
                 <Grid container spacing={2} columns={36}>
       <Grid item xs={12} sm={6}>
@@ -148,8 +150,10 @@ return (
 {isHotels && (
 <HotelOffers/>
 )}
-      {isroot && (
+      {ishome && (
            <Box sx={{mt:10}}>
+            <Typography variant="h4" sx={{mt:13, fontWeight: '100'}}>Destination Recommendations</Typography>
+                    <DestinationList/>
            {flightOffers.map((offer, index) => (
            <MediaCover key={index}
             price={offer.price.total}
