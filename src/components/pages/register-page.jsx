@@ -14,7 +14,6 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import SignupLogic from '../../hooks/signupLogic';
  import SignupRequest from '../../Logic/Signup/signUpRequest';
- 
 
 
 function Copyright(props) {
@@ -202,7 +201,7 @@ const SignUp = () => {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/login" variant="body2">
                   Already have an account? Sign in
                 </Link>
               </Grid>

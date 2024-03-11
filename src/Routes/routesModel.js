@@ -4,4 +4,4 @@ const ROUTES = {
     REGISTER: "/signup",
 };
 
-export { ROUTES };
+export default ROUTES ;

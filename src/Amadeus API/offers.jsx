@@ -11,6 +11,7 @@ import { useLocation } from "react-router-dom";
 import HotelOffers from "./hoteloffers";
 import DestinationList from "../Node.js/DestinationList";
 import Typography from '@mui/material/Typography';
+import LoginLogic from "../Logic/Login/login";
 
 
 const FlightOffers = () => {
@@ -23,6 +24,7 @@ const FlightOffers = () => {
     const [adults, setAdults] = useState('');
     const [price, setPrice] = useState(null);
     const [flightOffers, setFlightOffers] = useState([]);
+ 
 
     const location = useLocation();
 
@@ -64,6 +66,7 @@ console.error('Error getting flight offers', err);
     setLoading(false);
 }
 };
+
 
 return (
   <>
@@ -150,23 +153,29 @@ return (
 {isHotels && (
 <HotelOffers/>
 )}
-      {ishome && (
-           <Box sx={{mt:10}}>
-            <Typography variant="h4" sx={{mt:13, fontWeight: '100'}}>Destination Recommendations</Typography>
-                    <DestinationList/>
-           {flightOffers.map((offer, index) => (
-           <MediaCover key={index}
-            price={offer.price.total}
-             origin={offer.itineraries[0].segments[0].departure.iataCode}
-              destination={offer.itineraries[0].segments[0].arrival.iataCode} 
-               isDirectFlightOutbound={offer.itineraries[0].segments.length === 1}
-               isDirectFlightInbound={offer.itineraries.length > 1 && offer.itineraries[1].segments.length === 1}
-               connectionFinalDestination={offer.itineraries[0].segments.length > 1 ? offer.itineraries[0].segments[1].arrival.iataCode : null
-               }
-               />
-     ))};
-         </Box>
+            
+            {ishome && (
+    <Box sx={{ mt: 10 }}>
+      {!flightOffers.length && (
+        <>
+ <Typography variant="h4" sx={{ mt: 13, fontWeight: '100' }}>Destination Recommendations</Typography>
+         <DestinationList />
+        </>
       )}
+        {flightOffers.map((offer, index) => (
+            <MediaCover
+                key={index}
+                price={offer.price.total}
+                origin={offer.itineraries[0].segments[0].departure.iataCode}
+                destination={offer.itineraries[0].segments[0].arrival.iataCode}
+                isDirectFlightOutbound={offer.itineraries[0].segments.length === 1}
+                isDirectFlightInbound={offer.itineraries.length > 1 && offer.itineraries[1].segments.length === 1}
+                connectionFinalDestination={offer.itineraries[0].segments.length > 1 ? offer.itineraries[0].segments[1].arrival.iataCode : null}
+            />
+        ))}
+    </Box>
+)}
+
         </>
     );
 };

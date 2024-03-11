@@ -33,7 +33,7 @@ const defaultTheme = createTheme();
 
 const SignInSide = () => {
 
-  const { loginValue, HandleInputChange, HandleLoginClick } = LoginLogic();
+  const { loginValue, HandleInputChange, HandleLoginClick, handleRememberMe, rememberMe} = LoginLogic();
 
 
   return (
@@ -96,7 +96,7 @@ const SignInSide = () => {
                 value={loginValue.password}
               />
               <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
+                control={<Checkbox value="checkbox" id="rememberMe" onChange={handleRememberMe} color="primary" />}
                 label="Remember me"
               />
               <Button
@@ -114,7 +114,7 @@ const SignInSide = () => {
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Link href="#" variant="body2">
+                  <Link href="/signup" variant="body2">
                     {"Don't have an account? Sign Up"}
                   </Link>
                 </Grid>

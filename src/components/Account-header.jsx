@@ -16,6 +16,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import MenuPopupState from './menu';
 import Button from '@mui/material/Button';
 import { NavLink } from 'react-router-dom';
+import Links from './links';
 
 
 export default function AccountMenu() {
@@ -29,17 +30,8 @@ export default function AccountMenu() {
   };
   return (
     <React.Fragment>
-      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', textAlign: 'center' }}>
-        <Button>
-          <NavLink to="/signup">
-      <Typography sx={{ minWidth: 100, color:'white' }}>Signup</Typography>
-      </NavLink>
-      </Button>
-      <Button>
-      <NavLink to="/login">
-        <Typography sx={{ minWidth: 100, color:'white' }}>Login</Typography>
-        </NavLink>
-        </Button>
+      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', textAlign: 'center', }}>
+        <Links />
         <MenuPopupState/>
         <Tooltip title="Account settings">
           <IconButton

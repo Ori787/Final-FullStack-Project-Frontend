@@ -17,7 +17,7 @@ import { useNavigate } from "react-router-dom";
 const DemoPaper = styled(Paper)(({ theme }) => ({
   width: '100vw',
   height: '26vw',
-  backgroundColor: '#040720',
+  backgroundColor: '#00064A',
   padding: theme.spacing(2),
   ...theme.typography.body2,
   textAlign: 'center',
@@ -47,7 +47,6 @@ const MyBox = () => {
 <Container sx={{ml: -48.5, mt:5,}}>
   <Button variant="outlined" onClick={navigateToFlights} sx={{marginInline:1, color: 'white'}}>Flights</Button>
   <Button variant="outlined" onClick={navigateToHotels} sx={{marginInline:1, color: 'white'}}>Hotels</Button>
-  <Button variant="outlined" onClick={navigateToCars} sx={{marginInline:1, color: 'white'}}>Car Rental</Button>
   </Container>
   <ColumnsGrid/>
         </DemoPaper>

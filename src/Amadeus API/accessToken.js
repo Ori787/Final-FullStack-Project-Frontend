@@ -1,3 +1,3 @@
-const accessToken = "BYXmXnDn35lg9AKzE8dkj9AoAHqS";
+const accessToken = "pmFVrM25TIiG9EG4FvsbIOycwO2Q";
 
 export default accessToken;

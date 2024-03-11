@@ -12,6 +12,7 @@ export default function MediaCover({ price, origin, destination, isDirectFlightO
       sx={{
         display: 'flex',
         justifyContent: 'center',
+        padding: '2',
       }}
     >
       <Box
@@ -27,7 +28,7 @@ export default function MediaCover({ price, origin, destination, isDirectFlightO
           width: '100%',
         }}
       >
-        <Card component="div" sx={{ minWidth: 300, width: '100%', height: '33vh', marginTop: '3.5vh'}}>
+<Card component="div" sx={{ minWidth: 300, width: '100%', height: '33vh', marginTop: '3.5vh', borderColor:'darkblue', borderWidth: 2, borderRadius: 8 }} variant="outlined">
           <CardContent>
           {isDirectFlightOutbound ? <p>Direct Flight</p> : <p>Flight with Connection Stops</p>}
           <Box sx={{display:'flex',justifyContent:'space-between'}}>
