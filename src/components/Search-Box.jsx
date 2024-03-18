@@ -12,15 +12,26 @@ import AccountMenu from './Account-header';
 import { useLocation } from 'react-router-dom';
 import HotelOffers from '../Amadeus API/hoteloffers';
 import { useNavigate } from "react-router-dom";
+import Links from './links';
+
 
 
 const DemoPaper = styled(Paper)(({ theme }) => ({
   width: '100vw',
-  height: '26vw',
+  height: '40vh',
   backgroundColor: '#00064A',
   padding: theme.spacing(2),
   ...theme.typography.body2,
   textAlign: 'center',
+  [theme.breakpoints.down('sm')]: {
+
+    height: '15vh',
+  },
+
+  [theme.breakpoints.down('xs')]: {
+
+    height: '15vh',
+  },
 }));
 
 const MyBox = () => {
@@ -35,19 +46,19 @@ const MyBox = () => {
     navigate('/')
   }
 
-  const navigateToCars = () => {
-    navigate('/cars')
-  }
 
   return (
     <Stack direction="row" spacing={2}>
-      <DemoPaper variant="outlined">
+      <DemoPaper variant="outlined" sx={{xs: {height: '8vh'}, sm: {height: '8vh'} }}>
+      <Links />
         <AccountMenu/>
-        <Typography variant='h4' color={'white'} mr={120} mt={5}>BeSmart. Travel Smart.</Typography>
-<Container sx={{ml: -48.5, mt:5,}}>
+        <Box sx={{mt: 7}}>
+        <Typography variant={'h4'} color={'white'} mr={120} sx={{ mt: {xs: -14, sm: -14, md: 2, lg:2}  }}>BeSmart. Travel Smart.</Typography>
+<Container sx={{ml: -48.5, mt:5, display: {xs: 'none', sm: 'none', md: 'block', lg: 'block'} }}>
   <Button variant="outlined" onClick={navigateToFlights} sx={{marginInline:1, color: 'white'}}>Flights</Button>
   <Button variant="outlined" onClick={navigateToHotels} sx={{marginInline:1, color: 'white'}}>Hotels</Button>
   </Container>
+  </Box>
   <ColumnsGrid/>
         </DemoPaper>
     </Stack>

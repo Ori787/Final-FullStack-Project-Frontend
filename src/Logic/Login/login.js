@@ -7,8 +7,12 @@ import { authActions } from "../../store/authSlice";
 import { jwtDecode } from "jwt-decode";
 import ROUTES from "../../Routes/routesModel";
 import { getToken, storeToken } from "../../services/tokenStorage";
+import useAutoLogin from "../../hooks/useAutoLogin";
+
 
 const LoginLogic = () => {
+
+    const autoLogin = useAutoLogin();
 
     const dispatch = useDispatch();
 
@@ -51,12 +55,13 @@ const HandleLoginClick = async (e) => {
 
        if (data && data.token) {
 console.log("data", data)
-if (rememberMe) {
+const dataFromToken = jwtDecode(data.token);
+dispatch(authActions.login(dataFromToken));
 storeToken(data.token, rememberMe)
-}
-const decodedToken = jwtDecode(data.token);
-dispatch(authActions.login(decodedToken))
 navigate(ROUTES.HOME)
+if (rememberMe) {
+autoLogin(true);
+}
 }
 
     } catch (err) {
@@ -65,19 +70,7 @@ alert("Invalid password or email. please try again.")
     }
 };
 
-useEffect(() => {
-const token = getToken();
-if (token) {
-    try {
-const decodedToken = jwtDecode(token);
-dispatch(authActions.login(decodedToken));
-    } catch (err) {
-        console.error('Invalid or expired token:', err.message);
-dispatch(authActions.logout());
-storeToken('', false);
-    }
-}
-},[dispatch]);
+
 
 
 return { loginValue, HandleInputChange, HandleLoginClick, handleRememberMe, rememberMe };

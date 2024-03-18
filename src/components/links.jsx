@@ -8,7 +8,7 @@ import nextKey from "generate-my-key"
 
 const Links = () => {
 
-    const { loggedIn } = useSelector((bigPie) => bigPie.authSlice);
+    const loggedIn = useSelector((bigPie) => bigPie.authSlice.loggedIn);
 
     return (
         <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>

@@ -1,3 +1,3 @@
-const accessToken = "pmFVrM25TIiG9EG4FvsbIOycwO2Q";
+const accessToken = "phpiMSTotar7LATqwcYyft47PixW";
 
 export default accessToken;

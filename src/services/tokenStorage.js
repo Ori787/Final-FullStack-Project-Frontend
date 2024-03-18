@@ -17,7 +17,7 @@ const getToken = () => {
     if (token) {
         return token
     } else {
-        sessionStorage.getItem(TOKEN);
+       return sessionStorage.getItem(TOKEN);
     }
 };
 

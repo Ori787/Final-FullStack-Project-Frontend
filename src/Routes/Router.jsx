@@ -4,6 +4,7 @@ import { SignInSide } from "../components/pages/login-page";
 import { SignUp } from "../components/pages/register-page";
 import { FlightOffers } from "../Amadeus API/offers";
 import AuthGuard from "../Guard/authGuard";
+import Dashboard from "../components/Admin Dashboard/dashboard";
 
 
 const Router = () => {
@@ -13,6 +14,11 @@ const Router = () => {
             <Route path={ROUTES.REGISTER} element={<SignUp />}/>
             <Route path={ROUTES.HOME} element={<AuthGuard />}/>
             <Route path={ROUTES.HOME} element={<FlightOffers />} />
+            <Route path={ROUTES.ADMIN} element={
+                <AuthGuard>
+            <Dashboard/>
+            </AuthGuard>
+            } />
         </Routes>
     );
 };

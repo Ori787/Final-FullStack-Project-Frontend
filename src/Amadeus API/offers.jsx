@@ -9,7 +9,7 @@ import Button from '@mui/material/Button';
 import MediaCover from "../components/flight-offer-card";
 import { useLocation } from "react-router-dom";
 import HotelOffers from "./hoteloffers";
-import DestinationList from "../Node.js/DestinationList";
+import DestinationList from "../components/DestinationList";
 import Typography from '@mui/material/Typography';
 import LoginLogic from "../Logic/Login/login";
 
@@ -71,84 +71,97 @@ console.error('Error getting flight offers', err);
 return (
   <>
   { ishome && (
-            <Box sx={{ flexGrow: 1, mt:5, ml:6.2 }}>
-                <Grid container spacing={2} columns={36}>
-      <Grid item xs={12} sm={6}>
-      <TextField sx={{bgcolor:'white'}}
-                  autoComplete="From"
-                  name="From"
-                  fullWidth
-                  id="From"
-                  label="From"
-                  type="text"
-                  value={origin}
-                  onChange={(e) => setOrigin(e.target.value)}
-                  autoFocus
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-              <TextField sx={{bgcolor:'white'}}
-                  autoComplete="To"
-                  name="To"
-                  fullWidth
-                  id="To"
-                  label="To"
-                  type="text"
-                  value={destination}
-                  onChange={(e) => setDestination(e.target.value)}
-                  autoFocus
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField sx={{bgcolor:'white'}}
-                  autoComplete="Depart"
-                  name="Depart"
-                  fullWidth
-                  id="Depart"
-                  label="Depart"
-                  type="date"
-                  value={departureDate}
-                  onChange={(e) => setDepartureDate(e.target.value)}
-                  autoFocus
-                  InputLabelProps={{
-                    sx: {mt:-1.8}
-                  }}
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField sx={{bgcolor:'white'}}
-                  autoComplete="Return"
-                  name="Return"
-                  fullWidth
-                  id="Return"
-                  label="Return"
-                  type="date"
-                  value={returnDate}
-                  onChange={(e) => setReturnDate(e.target.value)}
-                  autoFocus
-                  InputLabelProps={{
-                    sx: {mt:-1.8}
-                  }}
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField sx={{bgcolor:'white'}}
-                  autoComplete="Travelers"
-                  name="Travelers"
-                  fullWidth
-                  id="Travelers"
-                  label="Travelers"
-                  type="number"
-                  value={adults}
-                  onChange={(e) => setAdults(e.target.value)}
-                  autoFocus
-                />
-              </Grid>
-        <Grid item xs={2.4}>
-        <Button variant="contained" sx={{height:'6.9vh'}} onClick={handleSubmit}>Search</Button>
-        </Grid>
-      </Grid>
-      </Box>
+   <Box sx={{ flexGrow: 1, mt: 5, ml: 2.5, width: '80vw' }}>
+   <Grid container spacing={2}>
+ 
+     <Grid item xs={12} sm={12} md={2} lg={2}>
+       <TextField
+         sx={{ bgcolor: 'white', width: '100%' }}
+         autoComplete="From"
+         name="From"
+         fullWidth
+         id="From"
+         label="From"
+         type="text"
+         value={origin}
+         onChange={(e) => setOrigin(e.target.value)}
+         autoFocus
+       />
+     </Grid>
+ 
+     <Grid item xs={12} sm={12} md={2} lg={2}>
+       <TextField
+         sx={{ bgcolor: 'white', width: '100%' }}
+         autoComplete="To"
+         name="To"
+         fullWidth
+         id="To"
+         label="To"
+         type="text"
+         value={destination}
+         onChange={(e) => setDestination(e.target.value)}
+         autoFocus
+       />
+     </Grid>
+ 
+     <Grid item xs={12} sm={12} md={2} lg={2}>
+       <TextField
+         sx={{ bgcolor: 'white', width: '100%' }}
+         autoComplete="Depart"
+         name="Depart"
+         fullWidth
+         id="Depart"
+         label="Depart"
+         type="date"
+         value={departureDate}
+         onChange={(e) => setDepartureDate(e.target.value)}
+         autoFocus
+         InputLabelProps={{
+           sx: { mt: -1.8 }
+         }}
+       />
+     </Grid>
+ 
+     <Grid item xs={12} sm={12} md={2} lg={2}>
+       <TextField
+         sx={{ bgcolor: 'white', width: '100%' }}
+         autoComplete="Return"
+         name="Return"
+         fullWidth
+         id="Return"
+         label="Return"
+         type="date"
+         value={returnDate}
+         onChange={(e) => setReturnDate(e.target.value)}
+         autoFocus
+         InputLabelProps={{
+           sx: { mt: -1.8 }
+         }}
+       />
+     </Grid>
+ 
+     <Grid item xs={12} sm={12} md={2} lg={2}>
+       <TextField
+         sx={{ bgcolor: 'white', width: '100%' }}
+         autoComplete="Travelers"
+         name="Travelers"
+         fullWidth
+         id="Travelers"
+         label="Travelers"
+         type="number"
+         value={adults}
+         onChange={(e) => setAdults(e.target.value)}
+         autoFocus
+       />
+     </Grid>
+ 
+     <Grid item xs={12} sm={12} md={2} lg={2}>
+       <Button variant="contained" sx={{ height: '6.9vh', width: '100%' }} onClick={handleSubmit}>Search</Button>
+     </Grid>
+ 
+   </Grid>
+ </Box>
+ 
 )}
 {isHotels && (
 <HotelOffers/>

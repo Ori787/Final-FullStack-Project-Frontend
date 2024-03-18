@@ -8,18 +8,17 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
-import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
-import MenuIcon from '@mui/icons-material/Menu';
 import MenuPopupState from './menu';
-import Button from '@mui/material/Button';
-import { NavLink } from 'react-router-dom';
-import Links from './links';
+import logout from '../Logic/logout/logout';
 
 
 export default function AccountMenu() {
+
+  const handleLogout = logout();
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -30,8 +29,7 @@ export default function AccountMenu() {
   };
   return (
     <React.Fragment>
-      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', textAlign: 'center', }}>
-        <Links />
+      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', textAlign: 'center', mt: {md: -6}, mt: {lg: -6}}}>
         <MenuPopupState/>
         <Tooltip title="Account settings">
           <IconButton
@@ -90,17 +88,14 @@ export default function AccountMenu() {
         <Divider />
         <MenuItem onClick={handleClose}>
           <ListItemIcon>
-            <PersonAdd fontSize="small" />
-          </ListItemIcon>
-          Add another account
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <ListItemIcon>
             <Settings fontSize="small" />
           </ListItemIcon>
           Settings
         </MenuItem>
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={() => {
+          handleClose();
+          handleLogout();
+        }}>
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>

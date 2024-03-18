@@ -6,41 +6,36 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import axios from "axios";
 import accessToken from "./accessToken";
-import { useEffect } from "react";
-
+import { HotelOffer } from "../components/hotel-list-card";
 
 const HotelList = () => {
-    const [city, setCity] = useState('');
-    const [hotels, setHotels] = useState([]);
+    const [cityCode, setCityCode] = useState('');
     const [error, setError] = useState(null);
+    const [hotelOffers, setHotelOffers] = useState([]);
+
+    const baseURL = "https://test.api.amadeus.com/v1"
   
-    useEffect(() => {
       const fetchHotels = async () => {
         try {
-          const response = await axios.get('/reference-data/locations/hotels/by-city', {
+          const response = await axios.get(`${baseURL}/reference-data/locations/hotels/by-city`, {
             params: {
-              city: city // Use the city state variable as the parameter
+              cityCode: cityCode
+            }, headers: {
+              Authorization: `Bearer ${accessToken}`
             }
           });
-          setHotels(response.data.data);
+          setHotelOffers(response.data.data);
+          console.log("response", response.data.data)
         } catch (error) {
           setError(error.message);
         }
       };
-  
-      if (city !== '') {
-        fetchHotels();
-      }
 
-      return () => {
-        // Any cleanup code here
-      };
-    }, [city]); 
 
     return (
         <>
                   <Box sx={{ flexGrow: 1, mt:5, ml:6.2 }}>
-                      <Grid container spacing={2} columns={36}>
+                      <Grid container spacing={2} columns={36} display={'flex'} justifyContent={'center'}>
             <Grid item xs={12} sm={6}>
             <TextField sx={{bgcolor:'white'}}
                         autoComplete="city"
@@ -49,15 +44,24 @@ const HotelList = () => {
                         id="city"
                         label="City"
                         type="text"
-                        value={city}
-                        onChange={(e) => setCity(e.target.value)}
+                        value={cityCode}
+                        onChange={(e) => setCityCode(e.target.value)}
                         autoFocus
                       />
                     </Grid>
+                    <Button variant="contained" sx={{height:'7vh', mt:2, ml: 10}} onClick={fetchHotels}>Search</Button>
               <Grid item xs={2.4}>
               </Grid>
             </Grid>
             </Box>
+            <Box mt={10}>
+          {hotelOffers.map((offer, index) => (
+            <HotelOffer 
+            key={index}
+            name={offer.name}
+            />
+          ))}
+          </Box>
               </>
           );
 }

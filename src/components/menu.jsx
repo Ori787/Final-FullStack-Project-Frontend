@@ -5,10 +5,14 @@ import MenuItem from '@mui/material/MenuItem';
 import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
+import { useNavigate } from "react-router-dom";
 
 
 
 export default function MenuPopupState() {
+
+  const navigate = useNavigate();
+
   return (
     <PopupState variant="popover" popupId="demo-popup-menu">
       {(popupState) => (
@@ -18,9 +22,13 @@ export default function MenuPopupState() {
           </MenuIcon>
           </IconButton>
           <Menu {...bindMenu(popupState)}>
-            <MenuItem onClick={popupState.close}>Flights</MenuItem>
-            <MenuItem onClick={popupState.close}>Hotels</MenuItem>
-            <MenuItem onClick={popupState.close}>Car Rental</MenuItem>
+          <MenuItem onClick={() => {
+            popupState.close(); 
+              navigate('/');
+            }}>Flights</MenuItem>
+            <MenuItem onClick={() => {
+              popupState.close();
+              navigate('/hotels')}}>Hotels</MenuItem>
           </Menu>
         </React.Fragment>
       )}
