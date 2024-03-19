@@ -6,7 +6,9 @@ const NavLinkComponent = ({ to, children }) => {
         <NavLink to={to}>
         <Typography
         marginInline={5}
-        mt={1}>
+        mt={1}
+        color={'white'}
+        >
             {children}
         </Typography>
             </NavLink>

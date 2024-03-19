@@ -71,7 +71,7 @@ console.error('Error getting flight offers', err);
 return (
   <>
   { ishome && (
-   <Box sx={{ flexGrow: 1, mt: 5, ml: 2.5, width: '80vw' }}>
+   <Box sx={{ flexGrow: 1, mt: {xs: 7, sm: 7, md: -3, lg: -3}, ml: 2.5, width: '80vw' }}>
    <Grid container spacing={2}>
  
      <Grid item xs={12} sm={12} md={2} lg={2}>

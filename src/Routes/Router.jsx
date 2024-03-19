@@ -5,20 +5,53 @@ import { SignUp } from "../components/pages/register-page";
 import { FlightOffers } from "../Amadeus API/offers";
 import AuthGuard from "../Guard/authGuard";
 import Dashboard from "../components/Admin Dashboard/dashboard";
-
+import UsersDataTable from "../components/Admin Dashboard/Users Data/usersDataTable";
+import CustomPaginationActionsTable from "../components/Admin Dashboard/Destinations Data/destinationsdataTable";
+import AdminGuard from "../Guard/adminGuard";
+import { HotelOffer } from "../components/hotel-list-card";
 
 const Router = () => {
     return (
         <Routes>
             <Route path={ROUTES.LOGIN} element={<SignInSide />}/>
+
             <Route path={ROUTES.REGISTER} element={<SignUp />}/>
+
             <Route path={ROUTES.HOME} element={<AuthGuard />}/>
+
+            <Route path={ROUTES.HOTELS} element={
+                <AuthGuard>
+            <HotelOffer />
+            </AuthGuard>
+            }/>
+
+
             <Route path={ROUTES.HOME} element={<FlightOffers />} />
+
             <Route path={ROUTES.ADMIN} element={
                 <AuthGuard>
-            <Dashboard/>
+             <AdminGuard>
+               <Dashboard/>
+            </AdminGuard>
             </AuthGuard>
             } />
+
+            <Route path={ROUTES.ADMINUSERSDATA} element={
+                 <AuthGuard>
+                 <AdminGuard>
+            <UsersDataTable />
+            </AdminGuard>
+            </AuthGuard>
+            } />
+
+            <Route path={ROUTES.ADMINDESTINATIONSDATA} element={
+                <AuthGuard>
+                <AdminGuard>
+            <CustomPaginationActionsTable />
+            </AdminGuard>
+            </AuthGuard>
+            } />
+
         </Routes>
     );
 };
