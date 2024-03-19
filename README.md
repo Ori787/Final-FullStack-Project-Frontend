@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+Hello and welcome to my app's Front-End.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This app's purpose is helping people find affordable travel fares based on a desired departure date, return date, origin, destination and number of passengers. 
 
-## Available Scripts
+First of all, let's start with all the commands you must run in your terminal.
 
-In the project directory, you can run:
+- npm i
 
-### `npm start`
+- npm start
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Now, a new window should get opened in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Before trying to use the app, don't forget to run the server. to make this happen, click on
 
-### `npm test`
+this link: https://github.com/Ori787/Final-FullStack-Project-Backend
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+then download it and follow it's readme file's instructions.
 
-### `npm run build`
+A little note, to correctly use the app's features, in the origin and destination's inputs 
+you have to use IATA code.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+For example, the IATA CODE of Ben Gurion Airport is 'TLV' (Tel Aviv).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+if you're not familiar with the IATA code field, you can use this example:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+in the origin input, type: TLV
 
-### `npm run eject`
+in the destination input, type: JFK (New York's John F Kennedy Airport).
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Moreover, the 3rd party's api key has only 20 minutes expiration period. 
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+so if you get a 401 status code error, it's likely because the API Key has expired.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+in order to keep using the app properly, go to Amadeus API folder --> accessToken.http -->
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+ send a POST request --> copy the access token and paste it in the accessToken const in 
+ 
+ accessToken.js file. save the changes and try now.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
