@@ -1,6 +1,8 @@
 Hello and welcome to my app's Front-End.
 
-This app's purpose is helping people find affordable travel fares based on a desired departure date, return date, origin, destination and number of passengers. 
+This app's purpose is helping people find affordable travel fares based on a desired departure date, return date, origin, destination and number of passengers. Moreover, when clicking on the 'HOTELS' button in the homepage, you can get a list of hotels based on your desired city (it works with IATA code as well).
+
+all of this happens thanks to interfacing with a third party's api named 'Amadeus for developers'.
 
 First of all, let's start with all the commands you must run in your terminal.
 
