@@ -39,3 +39,8 @@ in order to keep using the app properly, go to Amadeus API folder --> accessToke
  
  accessToken.js file. save the changes and try now.
 
+ if you want to log in with admin authorization, log in with the following details:
+
+email: seanrosher@gmail.com
+password: seanrosher1
+
