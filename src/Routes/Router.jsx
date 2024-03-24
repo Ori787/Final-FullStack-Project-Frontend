@@ -9,6 +9,7 @@ import UsersDataTable from "../components/Admin Dashboard/Users Data/usersDataTa
 import CustomPaginationActionsTable from "../components/Admin Dashboard/Destinations Data/destinationsdataTable";
 import AdminGuard from "../Guard/adminGuard";
 import { HotelOffer } from "../components/hotel-list-card";
+import EditUserComp from "../components/pages/editUser-page";
 
 const Router = () => {
     return (
@@ -51,6 +52,9 @@ const Router = () => {
             </AdminGuard>
             </AuthGuard>
             } />
+
+<Route path={ROUTES.EDITUSER} element={<EditUserComp />}/>
+
 
         </Routes>
     );
