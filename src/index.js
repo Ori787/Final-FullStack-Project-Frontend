@@ -9,9 +9,7 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import store from './store/bigPie';
 import { Provider } from "react-redux";
-import axios from "axios";
 
-axios.defaults.baseURL = "http://localhost:8080"
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

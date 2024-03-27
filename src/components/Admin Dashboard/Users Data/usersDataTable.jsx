@@ -17,6 +17,9 @@ import Typography from '@mui/material/Typography';
 import { getToken } from '../../../services/tokenStorage';
 import { useNavigate } from "react-router-dom";
 import TablePaginationActions from './TablePaginationActions';
+import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
+import Box from '@mui/material/Box';
+
 
 
 TablePaginationActions.propTypes = {
@@ -40,13 +43,13 @@ const UsersDataTable = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const URL = "http://localhost:8080/users";
+      const URL = process.env.REACT_APP_SERVER_BASE_URL;
       try {
         const token = getToken();
-        const response = await axios.get(URL, {
+        const response = await axios.get(`${URL}/users`, {
           headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${getToken()}`
+            "Authorization": `Bearer ${token}`
           }
         });
         const data = response.data;
@@ -59,10 +62,10 @@ const UsersDataTable = () => {
     fetchData();
   }, []);
 
-  const handleDeleteDestination = async (_id) => {
-    const deleteURL = `http://localhost:8080/users/${_id}`;
+  const handleDeleteUsers = async (_id) => {
+    const deleteURL = process.env.REACT_APP_SERVER_BASE_URL;
     try {
-      const response = await axios.delete(deleteURL, {
+      const response = await axios.delete(`${deleteURL}/users/${_id}`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${getToken()}`
@@ -97,7 +100,7 @@ const UsersDataTable = () => {
           ).map((user, index) => (
             <TableRow key={index}>
               <TableCell component="th" scope="row">
-                <Typography variant='h7' fontWeight={'bold'}>Email:</Typography>
+                <Typography variant='h7' fontWeight={'bold'}>Email:</Typography>      
                 <br/>
                 {user.email}
               </TableCell>
@@ -107,7 +110,7 @@ const UsersDataTable = () => {
                 </Button>
               </TableCell>
               <TableCell style={{ width: 160 }} align="right">
-                <Button onClick={() => handleDeleteDestination(user._id)}>
+                <Button onClick={() => handleDeleteUsers(user._id)}>
                   <DeleteOutlineIcon/>
                 </Button>
               </TableCell>
@@ -116,7 +119,12 @@ const UsersDataTable = () => {
         </TableBody>
         <TableFooter>
           <TableRow>
-            <TablePagination
+          <Box sx={{display: 'flex', justifyContent: 'flex-start'}}>
+              <Button  sx={{mt:1, ml: 1, position: 'absolute'}}>
+              <PersonAddAltIcon sx={{color: 'black'}} />
+              </Button>
+            </Box>
+            <TablePagination sx={{display: 'flex', ml: 60}}
               rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
               colSpan={3}
               count={usersList.length}

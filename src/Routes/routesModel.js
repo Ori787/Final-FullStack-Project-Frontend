@@ -7,6 +7,7 @@ const ROUTES = {
     ADMINDESTINATIONSDATA: "/admin/destinations",
     HOTELS: "/hotels",
     EDITUSER: "/edituser",
+    EDITDESTINATION: "/editdestination",
 };
 
 export default ROUTES ;

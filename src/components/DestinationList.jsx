@@ -12,9 +12,9 @@ const DestinationList = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-        const URL = "http://localhost:8080/destinations";
+        const URL = process.env.REACT_APP_SERVER_BASE_URL;
         try {
-            const response = await axios.get(URL, {
+            const response = await axios.get(`${URL}/destinations`, {
                 headers: {
                     "Content-Type": "application/json"
                 }

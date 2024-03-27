@@ -10,6 +10,7 @@ import CustomPaginationActionsTable from "../components/Admin Dashboard/Destinat
 import AdminGuard from "../Guard/adminGuard";
 import { HotelOffer } from "../components/hotel-list-card";
 import EditUserComp from "../components/pages/editUser-page";
+import EditDestinationComp from "../components/pages/editDestination-page";
 
 const Router = () => {
     return (
@@ -54,6 +55,8 @@ const Router = () => {
             } />
 
 <Route path={ROUTES.EDITUSER} element={<EditUserComp />}/>
+
+<Route path={ROUTES.EDITDESTINATION} element={<EditDestinationComp />}/>
 
 
         </Routes>

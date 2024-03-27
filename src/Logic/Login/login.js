@@ -38,6 +38,7 @@ const handleRememberMe = (e) => {
     setRememberMe(e.target.checked ? true : false)
 };
 
+const baseURL = process.env.REACT_APP_SERVER_BASE_URL;
 
 const request = loginValue;
 
@@ -50,7 +51,7 @@ const HandleLoginClick = async (e) => {
             console.log("Validation Error:", validation.error);
         }
         
-       const { data } = await axios.post("/users/login", request);
+       const { data } = await axios.post(`${baseURL}/users/login`, request);
 
 
        if (data && data.token) {

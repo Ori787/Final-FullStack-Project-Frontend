@@ -38,11 +38,11 @@ const [userValue, setUserValue] = useState({
 
 const handleEditUser = async (_id) => {
 
-    const URL = "http://localhost:8080/users"
+    const URL = process.env.REACT_APP_SERVER_BASE_URL;
 
 try {
 
-const response = await axios.put(URL, userValue, {
+const response = await axios.put(`${URL}/users`, userValue, {
     headers: {
         Authorization: `Bearer ${getToken()}`
     }, params: {
@@ -80,7 +80,7 @@ return (
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Update your user information
+            Update your information
           </Typography>
           <Box component="form" noValidate onSubmit={handleEditUser} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
